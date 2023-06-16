@@ -1,0 +1,76 @@
+{
+  "bins": [
+    {
+      "id": 0,
+      "content": "test2"
+    },
+    {
+      "id": 1,
+      "content": "test2"
+    },
+    {
+      "id": 2,
+      "content": "test"
+    },
+    {
+      "id": 3,
+      "content": ""
+    },
+    {
+      "id": 4,
+      "content": ""
+    },
+    {
+      "id": 5,
+      "content": ""
+    },
+    {
+      "id": 6,
+      "content": "testr"
+    },
+    {
+      "id": 7,
+      "content": "Hello, World!"
+    },
+    {
+      "id": 8,
+      "content": "test"
+    },
+    {
+      "id": 9,
+      "content": "test"
+    },
+    {
+      "id": 10,
+      "content": "test"
+    },
+    {
+      "id": 11,
+      "content": "TEST"
+    },
+    {
+      "id": 12,
+      "content": "test"
+    },
+    {
+      "id": 13,
+      "content": "test"
+    },
+    {
+      "id": 14,
+      "content": ""
+    },
+    {
+      "id": 15,
+      "content": "test"
+    },
+    {
+      "id": 16,
+      "content": ""
+    },
+    {
+      "id": 17,
+      "content": "test"
+    }
+  ]
+}

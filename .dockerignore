@@ -1,0 +1,4 @@
+node_modules
+Dockerfile
+client/dist
+client/node_modules

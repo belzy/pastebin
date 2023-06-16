@@ -6,7 +6,10 @@
 <mat-card style="padding: 8px; margin: 16px;">
   <div style="display: flex; justify-content: space-between;">
     <h2>Editor</h2>
-    <button mat-flat-button color="primary">Submit</button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="handleSubmit()">Submit</button>
   </div>
 
   <!-- EDITOR - PLAIN TEXT -->
@@ -16,7 +19,7 @@
       style="resize: none;"
       rows="20"
       matInput
-      [formControl]="name">
+      [formControl]="editorContent">
     </textarea>
   </mat-form-field>
 </mat-card>
