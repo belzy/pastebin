@@ -1,0 +1,60 @@
+
+<mat-card style="margin: 16px; padding: 16px;">
+
+  <!-- SETTINGS -->
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;">
+    <h2>New PasteBin</h2>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="handleSubmit()">
+      Submit
+    </button>
+  </div>
+
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    mat-align-tabs="start">
+    <!-- EDITOR TAB -->
+    <mat-tab label="Editor">
+
+      <!-- EDITOR - PLAIN TEXT -->
+      <mat-form-field
+        appearance="outline"
+        style="
+          width: 100%;
+          margin-top: 12px;">
+        <mat-label>Plain Text</mat-label>
+        <textarea
+          style="resize: none;"
+          rows="20"
+          matInput
+          [formControl]="editorContent">
+        </textarea>
+      </mat-form-field>
+
+    </mat-tab>
+
+    <!-- PREVIEW TAB -->
+    <mat-tab label="Preview">
+      <textarea
+        readonly
+        style="
+          resize: none;
+          outline: none;
+          border: none;
+          width: 100%;
+          padding: 0;
+          margin-top: 12px;"
+        rows="20"
+        [value]="editorContent.value">
+      </textarea>
+    </mat-tab>
+
+
+  </mat-tab-group>
+</mat-card>

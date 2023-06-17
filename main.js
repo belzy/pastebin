@@ -5,13 +5,14 @@ import { join, dirname } from 'path';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 8082;
 
 const server = Express();
 server.use(Express.json()) 
+server.use(Express.static(join(__dirname, 'client/dist/client')));
 
 // db.json file path
-const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, 'db.json');
 
 // Configure lowdb to write data to JSON file
@@ -19,7 +20,6 @@ const adapter = new JSONFile(file)
 const defaultData = { bins: [] }
 const db = new Low(adapter, defaultData)
 
-server.use(Express.static(join(__dirname, 'client/dist/client')));
 
 // server.get('/', async (req, res) => {
 //   await db.read();
@@ -27,7 +27,7 @@ server.use(Express.static(join(__dirname, 'client/dist/client')));
 //   res.json(bins);
 // });
 
-server.post('/', async (req, res) => {
+server.post('/bin', async (req, res) => {
   try {
     await db.read();
     const { bins } = db.data
@@ -47,6 +47,18 @@ server.post('/', async (req, res) => {
   }
 });
 
+server.get('/bin/:id', async (req, res) => {
+  const id = req.params.id;
+
+  await db.read();
+  const { bins } = db.data
+  const { content } = bins.filter(b => b.id.toString() === id.toString())[0];
+  res.json({ content });
+});
+
+server.get('*', (req, res) => {
+  res.sendFile(join(__dirname, 'client/dist/client/index.html'));
+});
 server.listen(PORT, () => {
   console.log(`[server] Server listening on port ${ PORT }...`);
 });

@@ -1,27 +1,19 @@
 
-<mat-toolbar color="primary">
+<mat-toolbar
+  color="primary"
+  style="
+    display: flex;
+    justify-content: space-between;">
   <span>PasteBin</span>
+
+  <button
+    [routerLink]="['/']"
+    mat-raised-button
+    color="accent">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="create"></mat-icon>
+    New
+  </button>
+
 </mat-toolbar>
-
-<mat-card style="padding: 8px; margin: 16px;">
-  <div style="display: flex; justify-content: space-between;">
-    <h2>Editor</h2>
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="handleSubmit()">Submit</button>
-  </div>
-
-  <!-- EDITOR - PLAIN TEXT -->
-  <mat-form-field appearance="outline">
-    <mat-label>Plain Text</mat-label>
-    <textarea
-      style="resize: none;"
-      rows="20"
-      matInput
-      [formControl]="editorContent">
-    </textarea>
-  </mat-form-field>
-</mat-card>
 
 <router-outlet></router-outlet>
