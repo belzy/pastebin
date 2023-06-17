@@ -1,0 +1,39 @@
+<div style="padding: 8px; display: flex; flex-direction: column; align-items: center;">
+  <h2>PasteBin Created!</h2>
+  <!-- <h3>Your PasteBin URL:</h3> -->
+
+  <mat-form-field
+    appearance="outline"
+    style="width: 280px;">
+    <mat-label>Your PasteBin URL</mat-label>
+    <input
+      #urlInput
+      aria-selected="true"
+      readonly
+      matInput
+      (focus)="selectText()"
+      [value]="origin + '/' + data.id"/>
+  </mat-form-field>
+
+  <div>
+  <button
+    style="margin-right: 8px; width: 130px;"
+    [routerLink]="['/']"
+    mat-raised-button
+    color="primary"
+    (click)="writeUrlToClipboard()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="link"></mat-icon>
+    Copy
+  </button>
+
+  <a
+    style="margin-left: 8px; width: 130px;"
+    [href]="origin + '/' + data.id"
+    target="_blank"
+    mat-raised-button
+    color="accent">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="open_in_new"></mat-icon>
+    Open
+  </a>
+  </div>
+</div>

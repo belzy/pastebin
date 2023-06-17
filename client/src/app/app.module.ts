@@ -25,6 +25,7 @@ import { TestComponent } from './test/test.component';
 import { EditorComponent } from './editor/editor.component';
 import { ContentComponent } from './content/content.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { UrlDialogComponent } from './url-dialog/bin-url-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     DashboardComponent,
     TestComponent,
     EditorComponent,
-    ContentComponent
+    ContentComponent,
+    UrlDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,18 @@
 <mat-card style="padding: 8px; margin: 16px;">
+  <h2>{{ data.title }}</h2>
+  <p *ngIf="expiration">Expires In {{ expiration }}</p>
   <textarea
     readonly
-    style="resize: none; outline: none; border: none;"
+    style="
+      box-sizing: border-box;
+      resize: none;
+      outline: none;
+      border: 1px solid lightgray;
+      border-radius: 4px;
+      padding: 8px;
+      width: 100%;"
     rows="20"
     matInput
-    [value]="content">
+    [value]="data.content">
   </textarea>
 </mat-card>

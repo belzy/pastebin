@@ -5,17 +5,59 @@
   <div
     style="
       display: flex;
-      justify-content: space-between;">
-    <h2>New PasteBin</h2>
+      justify-content: space-between;
+      align-items: center;">
+    <h2 style="margin: 0;">New PasteBin</h2>
 
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="handleSubmit()">
-      Submit
-    </button>
+    <div
+      style="
+        display: flex;
+        align-items: center;">
+
+      <button
+        mat-flat-button
+        [matMenuTriggerFor]="menu"
+        style="margin-right: 8px;">
+        Expiration: {{ expirationText }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="handleExpirationClick('1 Minute')" mat-menu-item>1 Minute</button>
+        <button (click)="handleExpirationClick('5 Minutes')" mat-menu-item>5 Minutes</button>
+        <button (click)="handleExpirationClick('10 Minutes')"  mat-menu-item>10 Minutes</button>
+        <button (click)="handleExpirationClick('30 Minutes')"  mat-menu-item>30 Minutes</button>
+        <button (click)="handleExpirationClick('1 Hour')"  mat-menu-item>1 Hour</button>
+        <button (click)="handleExpirationClick('1 Day')"  mat-menu-item>1 Day</button>
+        <button (click)="handleExpirationClick('1 Week')"  mat-menu-item>1 Week</button>
+        <button (click)="handleExpirationClick('1 Month')"  mat-menu-item>1 Month</button>
+        <button (click)="handleExpirationClick('1 Year')"  mat-menu-item>1 Year</button>
+        <button (click)="handleExpirationClick('Never')"  mat-menu-item>Never</button>
+        <button (click)="handleExpirationClick('Custom')"  mat-menu-item>Custom</button>
+      </mat-menu>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="handleSubmit()">
+        Submit
+      </button>
+    </div>
   </div>
+  <!--  -->
 
+  <!-- TITLE INPUT -->
+  <mat-form-field
+    style="
+      width: 380px;
+      margin-top: 16px;"
+    appearance="outline">
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      [formControl]="title"
+    />
+  </mat-form-field>
+
+  <!-- TABS -->
   <mat-tab-group
     mat-stretch-tabs="false"
     mat-align-tabs="start">
@@ -27,7 +69,7 @@
         appearance="outline"
         style="
           width: 100%;
-          margin-top: 12px;">
+          margin-top: 16px;">
         <mat-label>Plain Text</mat-label>
         <textarea
           style="resize: none;"
@@ -44,17 +86,18 @@
       <textarea
         readonly
         style="
+          box-sizing: border-box;
           resize: none;
           outline: none;
-          border: none;
-          width: 100%;
-          padding: 0;
-          margin-top: 12px;"
+          border: 1px solid lightgray;
+          border-radius: 4px;
+          padding: 8px;
+          margin-top: 16px;
+          width: 100%;"
         rows="20"
         [value]="editorContent.value">
       </textarea>
     </mat-tab>
-
 
   </mat-tab-group>
 </mat-card>

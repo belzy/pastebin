@@ -32,12 +32,17 @@ server.post('/bin', async (req, res) => {
     await db.read();
     const { bins } = db.data
 
-    const { content } = req.body; 
+    const {
+      title,
+      content,
+      expiration,
+    } = req.body; 
+
     const id = bins.length 
       ? bins[bins.length - 1].id + 1
       : 0;
 
-    bins.push({ id, content });
+    bins.push({ id, title, content, expiration });
     await db.write();
 
     res.json({ id });
@@ -52,8 +57,13 @@ server.get('/bin/:id', async (req, res) => {
 
   await db.read();
   const { bins } = db.data
-  const { content } = bins.filter(b => b.id.toString() === id.toString())[0];
-  res.json({ content });
+  const bin = bins.filter(b => b.id.toString() === id.toString())[0];
+
+  if (bin.expiration && bin.expiration <= Date.now()) {
+    console.log('expired')
+    res.json({ expired: true });
+  } else
+    res.json(bin);
 });
 
 server.get('*', (req, res) => {
